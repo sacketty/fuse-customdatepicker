@@ -2,9 +2,9 @@
     <string ux:Property="Type" />
     <string ux:Property="DiskSelected" />
     <object ux:Property="DateTime" />
+    <string ux:Property="InputLabel" />
 
     <JavaScript File="CirclePanel.js" />
-	<ux:Include File="pickerTypes.ux" />
 
 	<AlternateRoot IsEnabled="{visibleStatus}" ParentNode="{Resource rootWindow}" ux:Name="self">
 		<Header ux:InnerClass="DateText" TextColor="#FFF" Dock="Left" Alignment="VerticalCenter" FontSize="28" />
@@ -21,28 +21,28 @@
 
 		<DockPanel Background="#E2FEF4" Width="250" Height="350" Layer="Overlay">
 			<Grid Background="#FF78BE" Height="24" Dock="Top">
-				<Body Alignment="Center" FontSize="14">My Header</Body>
+				<Body Alignment="Center" FontSize="14" Value="{Property rootDisk.InputLabel}"></Body>
 			</Grid>
 			<Grid Opacity="1" Background="#CB88A0" Height="40" Dock="Top">
 				<DockPanel Alignment="Center">
 					<DateText Value="{dateObj.ref.days}">
 						<Clicked>
-							<Set pickerstate.Active="daysState" />
+							<Set Target="rootDisk.DiskSelected" Value="days"/>
 						</Clicked>		
 					</DateText>
 					<DateText Value=" / " />
 					<DateText Value="{dateObj.ref.months}">
 						<Clicked>
-							<Set pickerstate.Active="monthsState" />
+							<Set Target="rootDisk.DiskSelected" Value="months"/>
 						</Clicked>		
 					</DateText>
 					<DateText Value=" / " />
 					<DateText Value="{dateObj.fullYear}">
 						<Clicked>
-							<Set pickerstate.Active="yearsState" />
+							<Set Target="rootDisk.DiskSelected" Value="years"/>
 						</Clicked>
 						<DoubleClicked>
-							<Set pickerstate.Active="centuriesState" />
+							<Set Target="rootDisk.DiskSelected" Value="centuries"/>
 						</DoubleClicked>	
 					</DateText>
 				</DockPanel>
@@ -52,7 +52,7 @@
 					<WheelDigit />
 				</Each>
 			</Circle>
-			<Text Value="{Property rootDisk.DiskSelected}" />
+			<Text Value="{selector}" Opacity="0.4"/>
 			<DockPanel Padding="10, 0, 10, 0" Height="40" Dock="Bottom">
 				<Button Text="annuler" Clicked="{cancel}" Dock="Left" />
 				<Button Text="confirmer" Clicked="{confirm}" Dock="Right" />
@@ -60,4 +60,5 @@
 		</DockPanel>
 	</AlternateRoot>
 </Panel>
+
 

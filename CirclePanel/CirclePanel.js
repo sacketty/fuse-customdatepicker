@@ -11,7 +11,7 @@ var digitFill = [151,59,77,0.5];
 var centerFill =[parseInt("ff",16), 0, 0, 1];
 var lineOpacity = 0.2;
 
-var selector = Observable("days");
+var selector = Observable("centuries");
 
 var digits = selector.map(makeDigits).inner();
 
@@ -24,6 +24,7 @@ var wheelDigitsView = digits.map(function(item, index){
 
 //var dateValue = Observable(new DateObject(this.DateTime.value));
 var dateTime = this.DateTime;
+var pickerLabel = this.InputLabel;
 var dateValue = dateTime.inner().map(function(x){
 	return new DateObject(x);
 });
@@ -32,10 +33,9 @@ var dateElement = dateValue.map(function(x){
 	digits.forEach(fillSelected);
 });
 
-
-this.setdate = function(year,month,day){
-	dateValue.value = dateValue.value.setDate(year, month, day);
-}
+var selectorReact = selector.map(function(){
+	digits.forEach(fillSelected);
+});
 
 function DateObject(dte){
 	var dt = dte || {years: 1970, month: 1, day: 1}; //just in case dte might be null
@@ -178,7 +178,8 @@ function confirm(e){
 //Modal management
 var vstatus = Observable(false);
 
-function showModal(date){
+function showModal(label, date){
+	pickerLabel.value = label;
 	dateTime.value = date;
 	vstatus.value = true;
 }
@@ -189,6 +190,7 @@ this.show = showModal;
 module.exports = {
 	dateObj: dateValue,
 	dateElement: dateElement, // to ensure reactivity
+	selectorReact: selectorReact,
 	bigCircle: bigCircle,
 	wheelDigitsView: wheelDigitsView,
 	selector: selector,

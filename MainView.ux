@@ -14,11 +14,11 @@
 		}
 
 		function showPicker(){
-			datePicker.show(dateSelect);
+			datePicker.show("Set Debut", dateSelect);
 		}
 
 		function showPicker2(){
-			datePicker.show(dateEnd);
+			datePicker.show("Set End", dateEnd);
 		}
 
 		module.exports = {
