@@ -18,8 +18,10 @@
 				<Rotation Degrees="{item.angle}" />
 			</Rectangle>
 		</Panel>
-
+		<Panel Layer="Overlay">
+		<Panel Background="#444444" Opacity="0.8" />
 		<DockPanel Background="#E2FEF4" Width="250" Height="350" Layer="Overlay">
+			<DropShadow Size="10" Distance="6" Spread="0.05" Color="#0008" Angle="90" />
 			<Grid Background="#FF78BE" Height="24" Dock="Top">
 				<Body Alignment="Center" FontSize="14" Value="{Property rootDisk.InputLabel}"></Body>
 			</Grid>
@@ -58,6 +60,7 @@
 				<Button Text="confirmer" Clicked="{confirm}" Dock="Right" />
 			</DockPanel>
 		</DockPanel>
+		</Panel>
 	</AlternateRoot>
 </Panel>
 
