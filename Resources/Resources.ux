@@ -1,0 +1,14 @@
+<Panel>
+	<float4 ux:Global="FGreen"      ux:Value="#14FFB5"/>
+	<float4 ux:Global="FPurple"     ux:Value="#5E2E91"/>
+	<float4 ux:Global="FGray"       ux:Value="#999999"/>
+	<float4 ux:Global="TopGray"    ux:Value="#9F83BD"/>
+	<float4 ux:Global="BottomGray" ux:Value="#7E58A7"/>
+	<float4 ux:Global="LightGreen" ux:Value="#C3DED6"/>
+	
+	<Font File="../assets/Roboto-Regular.ttf" ux:Global="Regular" />
+	<Font File="../assets/Roboto-Medium.ttf" ux:Global="Medium" />
+	<Text ux:Class="Header" Font="Medium" FontSize="23"  TextColor="#222" Margin="0,0,0,15" />
+	<Text ux:Class="Body" Font="Regular" FontSize="17" TextColor="#555" TextWrapping="Wrap" />
+
+</Panel>

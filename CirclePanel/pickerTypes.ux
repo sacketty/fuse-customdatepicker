@@ -1,0 +1,23 @@
+<StateGroup ux:Name="pickerstate">
+	<DataBinding Target="pickerstate.Active" Key="activeState" />
+	<State ux:Name="monthsState">
+		<ResourceString Key="keyType" Value="Months"/>
+		<Set rootDisk.DiskSelected="months"/>
+		<ResourceString Key="nextState" Value="daysState"/>
+	</State>
+	<State ux:Name="daysState">
+		<ResourceString Key="keyType" Value="Days"/>
+		<Set rootDisk.DiskSelected="days"/>
+		<ResourceString Key="nextState" Value="daysState"/>
+	</State>
+	<State ux:Name="yearsState">
+		<ResourceString Key="keyType" Value="Years"/>
+		<Set rootDisk.DiskSelected="years"/>
+		<ResourceString Key="nextState" Value="monthsState"/>
+	</State>
+	<State ux:Name="centuriesState">
+		<ResourceString Key="keyType" Value="Centuries"/>
+		<Set rootDisk.DiskSelected="centuries"/>
+		<ResourceString Key="nextState" Value="yearsState"/>
+	</State>
+</StateGroup>

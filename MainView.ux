@@ -1,0 +1,49 @@
+<App>
+	<ux:Include File="Resources/Resources.ux" />
+
+	<JavaScript>
+		var Observable = require("FuseJS/Observable");
+		var dateSelect = Observable({year: 2015, month: 12, day: 25});
+		var dateEnd = Observable({year: 2017, month: 8, day: 16});
+		var ymdDate = dateSelect.map(ymdToString);
+		var ymdDate2 = dateEnd.map(ymdToString);
+
+
+		function ymdToString(x){
+			return x.year + " - " + x.month + " - " + x.day;			
+		}
+
+		function showPicker(){
+			datePicker.show(dateSelect);
+		}
+
+		function showPicker2(){
+			datePicker.show(dateEnd);
+		}
+
+		module.exports = {
+			setDate: showPicker,
+			setEndDate: showPicker2,
+			dateSelect: dateSelect,
+			ymdDate: ymdDate,
+			ymdDate2: ymdDate2
+		}
+	</JavaScript>
+
+	<Grid ux:Name="FullWindow" Rows="60, 60">
+		<ResourceObject Key="rootWindow" Value="FullWindow" />
+		<CirclePanel ux:Name="datePicker"/>
+		<Grid Columns="40, 1*, 1*" Padding="10,10">
+			<Image File="assets/date.png" Width="25" Alignment="CenterLeft" Color="#89C372" />
+			<Text Value="{ymdDate}" Alignment="VerticalCenter" />
+			<Button Text="Ste Date" Clicked="{setDate}" />
+		</Grid>
+		<Grid Columns="40, 1*, 1*" Padding="10,10">
+			<Image File="assets/date.png" Width="25" Alignment="CenterLeft" Color="#89C372" />
+			<Text Value="{ymdDate2}" Alignment="VerticalCenter" />
+			<Button Text="Ste End Date" Clicked="{setEndDate}" />
+		</Grid>
+	</Grid>
+
+
+</App>

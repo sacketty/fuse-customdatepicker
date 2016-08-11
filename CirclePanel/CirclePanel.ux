@@ -1,0 +1,63 @@
+<Panel ux:Class="CirclePanel" ux:Name="rootDisk" DiskSelected="{selector}" Type="date">
+    <string ux:Property="Type" />
+    <string ux:Property="DiskSelected" />
+    <object ux:Property="DateTime" />
+
+    <JavaScript File="CirclePanel.js" />
+	<ux:Include File="pickerTypes.ux" />
+
+	<AlternateRoot IsEnabled="{visibleStatus}" ParentNode="{Resource rootWindow}" ux:Name="self">
+		<Header ux:InnerClass="DateText" TextColor="#FFF" Dock="Left" Alignment="VerticalCenter" FontSize="28" />
+		<Panel ux:Class="WheelDigit" Entered="{setSelected}" Released="{nextState}">
+			<Circle Fill="{item.fill}" Width="60" Height="30" Opacity="0.35">
+				<Text Value="{item.text}" Alignment="VerticalCenter" TextColor="#0E0E0E" TextAlignment="Center" />
+				<Circle Width="10" Height="10" Fill="{item.centerFill}" />
+				<Translation X="{item.abs}" Y="{item.ord}" />
+			</Circle>
+			<Rectangle Width="1" Height="{item.line}" Fill="#FF3634" Alignment="Center" Padding="0" Opacity="{item.opacity}">
+				<Rotation Degrees="{item.angle}" />
+			</Rectangle>
+		</Panel>
+
+		<DockPanel Background="#E2FEF4" Width="250" Height="350" Layer="Overlay">
+			<Grid Background="#FF78BE" Height="24" Dock="Top">
+				<Body Alignment="Center" FontSize="14">My Header</Body>
+			</Grid>
+			<Grid Opacity="1" Background="#CB88A0" Height="40" Dock="Top">
+				<DockPanel Alignment="Center">
+					<DateText Value="{dateObj.ref.days}">
+						<Clicked>
+							<Set pickerstate.Active="daysState" />
+						</Clicked>		
+					</DateText>
+					<DateText Value=" / " />
+					<DateText Value="{dateObj.ref.months}">
+						<Clicked>
+							<Set pickerstate.Active="monthsState" />
+						</Clicked>		
+					</DateText>
+					<DateText Value=" / " />
+					<DateText Value="{dateObj.fullYear}">
+						<Clicked>
+							<Set pickerstate.Active="yearsState" />
+						</Clicked>
+						<DoubleClicked>
+							<Set pickerstate.Active="centuriesState" />
+						</DoubleClicked>	
+					</DateText>
+				</DockPanel>
+			</Grid>
+			<Circle Fill="#9DFFC2" Width="{bigCircle}">
+				<Each Items="{wheelDigitsView}">
+					<WheelDigit />
+				</Each>
+			</Circle>
+			<Text Value="{Property rootDisk.DiskSelected}" />
+			<DockPanel Padding="10, 0, 10, 0" Height="40" Dock="Bottom">
+				<Button Text="annuler" Clicked="{cancel}" Dock="Left" />
+				<Button Text="confirmer" Clicked="{confirm}" Dock="Right" />
+			</DockPanel>
+		</DockPanel>
+	</AlternateRoot>
+</Panel>
+
