@@ -32,7 +32,7 @@
 
 	<Grid ux:Name="FullWindow" Rows="60, 60">
 		<ResourceObject Key="rootWindow" Value="FullWindow" />
-		<CirclePanel ux:Name="datePicker"/>
+		<Bsc.DatePicker ux:Name="datePicker"/>
 		<Grid Columns="40, 1*, 1*" Padding="10,10">
 			<Image File="assets/date.png" Width="25" Alignment="CenterLeft" Color="#89C372" />
 			<Text Value="{ymdDate}" Alignment="VerticalCenter" />

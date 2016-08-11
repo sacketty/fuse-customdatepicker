@@ -1,10 +1,10 @@
-<Panel ux:Class="CirclePanel" ux:Name="rootDisk" DiskSelected="{selector}" Type="date">
+<Panel ux:Class="Bsc.DatePicker" ux:Name="rootDisk" DiskSelected="{selector}" Type="date">
     <string ux:Property="Type" />
     <string ux:Property="DiskSelected" />
     <object ux:Property="DateTime" />
     <string ux:Property="InputLabel" />
 
-    <JavaScript File="CirclePanel.js" />
+    <JavaScript File="DatePicker.js" />
 
 	<AlternateRoot IsEnabled="{visibleStatus}" ParentNode="{Resource rootWindow}" ux:Name="self">
 		<Header ux:InnerClass="DateText" TextColor="#FFF" Dock="Left" Alignment="VerticalCenter" FontSize="28" />
