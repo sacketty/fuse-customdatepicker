@@ -56,8 +56,8 @@
 			</Circle>
 			<Text Value="{selector}" Opacity="0.4"/>
 			<DockPanel Padding="10, 0, 10, 0" Height="40" Dock="Bottom">
-				<Button Text="annuler" Clicked="{cancel}" Dock="Left" />
-				<Button Text="confirmer" Clicked="{confirm}" Dock="Right" />
+				<Button Text="Cancel" Clicked="{cancel}" Dock="Left" />
+				<Button Text="Submit" Clicked="{confirm}" Dock="Right" />
 			</DockPanel>
 		</DockPanel>
 		</Panel>
